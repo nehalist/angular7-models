@@ -1,8 +1,26 @@
-<div style="text-align:center">
-  <input type="number" [(ngModel)]="userId" placeholder="Random number"> <button type="button" (click)="getUser()">Get user</button>
+<div style="width: 400px; margin: auto;">
+  <h1>Angular 7 model showcase</h1>
+  <input type="number" [(ngModel)]="userId" placeholder="User ID">
+  <button type="button" (click)="getUser()">Get user</button>
+
+  <button type="button" (click)="getAllUsers()">Get all users</button>
 
   <div *ngIf="user">
-    The user with id {{user.id}} is called {{user.name}}.
+    User is called {{user.getFullName()}}. He has the following cars:
+    <ul>
+      <li *ngFor="let car of user.cars">
+        {{car.brand}} {{car.model}} with {{car.getHp()}} hp.
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="users">
+    <hr>
+
+    <ul>
+      <li *ngFor="let user of users;">
+        {{user.getFullName()}} is {{user.position}} and has {{user.cars.length}} cars
+      </li>
+    </ul>
   </div>
 </div>
-
